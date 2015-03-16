@@ -70,7 +70,6 @@ class TimeSheeter(object):
             self.message = message
             self.menu_items['set_break'].show()
         self.update_context_status()
-        self.menu_items['ticket'].set_label(self.context_status)
 
     def update_context_status(self):
         """
@@ -94,6 +93,7 @@ class TimeSheeter(object):
         delta = '{0}h {1}m'.format(*str(delta).split(':')[:2])
         message += "\n  Since: {0}, {1}".format(self.since.strftime("%H:%M"), delta)
         self.context_status = message
+        self.menu_items['ticket'].set_label(self.context_status)
         self.set_message(self.message)
 
     def set_message(self, message):
